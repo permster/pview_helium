@@ -113,7 +113,8 @@ class Student(object):
         classnames = []
         cells = find_all(S(f"//*/ul[@class='list-group layout-table padded']/li"))
         for cell in cells:
-            classnames.append(re.search(".*\d\s(.*)\s\-\s\d.*", cell.web_element.text.split('\n', 1)[0]).group(1))
+            classnames.append(re.search(".*[0-9][A-Za-z0-9]\s(.*)\s\-\s\d.*",
+                                        cell.web_element.text.split('\n', 1)[0]).group(1))
         self.classlist = classnames
 
     def get_class(self, classname, **kwargs):
